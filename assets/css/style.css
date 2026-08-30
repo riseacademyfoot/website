@@ -643,9 +643,15 @@ td{color:rgba(255,255,255,.85)}
 /* Steps */
 .steps{
   display:grid;
-  gap:20px;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:16px;
+  grid-template-columns:repeat(4,1fr);
   margin:20px 0 10px;
+}
+@media (max-width:880px){
+  .steps{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:520px){
+  .steps{grid-template-columns:1fr}
 }
 .step-card{
   background:var(--panel);
