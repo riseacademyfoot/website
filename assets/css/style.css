@@ -296,6 +296,15 @@ td{color:rgba(255,255,255,.85)}
 }
 @media (max-width:900px){.summary-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:520px){.summary-grid{grid-template-columns:1fr}}
+/* The Holiday Series footnote. Placed as its own grid item on a second
+   row under the last column, rather than inside the card or in a wrapper
+   around it: a wrapper would eat 27px of that cell and leave the fourth
+   card visibly shorter than the other three. This way all four cards keep
+   an identical height and the note sits outside the border, exactly like
+   the "Januari – maart 2027" note under the calendar. */
+.summary-grid-note{grid-column:4;margin-top:0}
+@media (max-width:900px){.summary-grid-note{grid-column:2}}
+@media (max-width:520px){.summary-grid-note{grid-column:1}}
 .summary-card{
   background:var(--panel);
   border:1px solid var(--line);
@@ -685,6 +694,8 @@ td{color:rgba(255,255,255,.85)}
   letter-spacing:.08em;
   text-transform:uppercase;
 }
+
+.cta-center{text-align:center;margin:28px 0 0}
 
 /* Contact form */
 .contact-form{
