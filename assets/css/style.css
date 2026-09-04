@@ -245,7 +245,11 @@ ul.plain li{margin-bottom:6px}
 .coach-photo svg{
   width:52%;
   height:52%;
-  fill:rgba(255,255,255,.16);
+  /* 16% wit kwam neer op rgb(52,52,52) op een vak van rgb(13,13,13) —
+     technisch aanwezig maar in de praktijk onzichtbaar. 32% geeft
+     ongeveer rgb(90,90,90): duidelijk leesbaar als silhouet, maar nog
+     steeds ondergeschikt aan de naam en de tekst eronder. */
+  fill:rgba(255,255,255,.32);
 }
 .coach-photo img{
   width:100%;
