@@ -1,4 +1,25 @@
 /* Rise Academy — shared site styles */
+
+/* Raleway, lokaal gehost (variabel, 400-800 in één bestand).
+   Voorheen via fonts.googleapis.com: dat blokkeerde het renderen en
+   kostte twee extra verbindingen naar een externe host. */
+@font-face{
+  font-family:'Raleway';
+  font-style:normal;
+  font-weight:400 800;
+  font-display:swap;
+  src:url('../fonts/raleway-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face{
+  font-family:'Raleway';
+  font-style:normal;
+  font-weight:400 800;
+  font-display:swap;
+  src:url('../fonts/raleway-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
 :root{
   --black:#000;
   --white:#fff;
@@ -812,4 +833,95 @@ footer p{color:var(--grey);font-size:12px;margin:0 0 6px}
 @media (max-width:600px){
   .site-header{padding:26px 16px 14px}
   section{padding:0 16px 46px}
+}
+
+
+/* ---- Navigatie: overslaan-link, logo als link, kruimelpad ---- */
+.skip-link{
+  position:absolute;left:-9999px;top:0;
+  background:var(--pink);color:var(--black);
+  padding:12px 20px;border-radius:0 0 8px 0;
+  font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;
+  z-index:100;
+}
+.skip-link:focus{left:0;text-decoration:none}
+
+a.logo-badge{display:block;text-decoration:none}
+a.logo-badge:hover{outline:2px solid var(--pink);outline-offset:3px}
+
+nav.site-nav a:focus-visible,
+.skip-link:focus-visible,
+footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+
+.breadcrumb{
+  max-width:var(--max);margin:0 auto;padding:14px 24px 0;
+  font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);
+}
+.breadcrumb ol{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0}
+.breadcrumb li+li::before{content:"›";margin-right:8px;color:var(--grey)}
+.breadcrumb a{color:var(--grey)}
+.breadcrumb a:hover{color:var(--pink)}
+.breadcrumb [aria-current]{color:var(--white)}
+
+/* ---- Actieblok (call-to-action) ---- */
+.cta-band{
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--panel);
+  padding:34px 28px;
+  text-align:center;
+}
+.cta-band h2{margin-top:0}
+.cta-band p{max-width:56ch;margin-left:auto;margin-right:auto}
+.cta-actions{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:14px;margin-top:22px;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+
+/* ---- Praktische gegevens op de homepagina ---- */
+.facts{
+  display:grid;gap:18px;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  margin:0;padding:0;
+}
+.facts>div{
+  border:1px solid var(--line);border-radius:12px;
+  background:var(--panel);padding:20px 18px;
+}
+.facts dt{
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--pink);font-weight:800;margin:0 0 8px;
+}
+.facts dd{margin:0;font-size:14px;line-height:1.65}
+
+/* ---- Veelgestelde vragen ---- */
+.faq{border-top:1px solid var(--line);margin-top:8px}
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.faq summary{
+  cursor:pointer;font-weight:700;font-size:15px;
+  list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--pink);font-weight:800;font-size:20px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq summary:hover{color:var(--pink)}
+.faq p{margin:12px 0 0;color:#d8d8d8;font-size:14px}
+
+/* ---- Navigatie in de voettekst ---- */
+.footer-nav{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  gap:10px 24px;margin:0 0 24px;padding:0;list-style:none;
+}
+.footer-nav a{
+  color:var(--white);font-size:11px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.footer-nav a:hover{color:var(--pink);text-decoration:none}
+
+@media (max-width:600px){
+  .cta-band{padding:26px 18px}
+  .hero-actions .btn,.hero-actions .btn-outline,
+  .cta-actions .btn,.cta-actions .btn-outline{width:100%;text-align:center}
+  .breadcrumb{padding:12px 16px 0}
 }
