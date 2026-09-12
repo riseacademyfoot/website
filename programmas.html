@@ -24,6 +24,7 @@
   --pink:#F38CAA;
   --pink-deep:#C23D63;
   --grey:#9a9a9a;
+  --gold:#D9AE55;
   --line:rgba(255,255,255,.25);
   --panel:rgba(255,255,255,.05);
   --max:980px;
@@ -519,6 +520,7 @@ td{color:rgba(255,255,255,.85)}
 .cal-dot.dot-talent{background:#fff}
 .cal-dot.dot-idp{background:var(--pink-deep)}
 .cal-dot.dot-holiday{background:var(--grey)}
+.cal-dot.dot-game1ai{background:var(--gold)}
 .cal-dot.hidden-type{display:none}
 .cal-legend{
   display:flex;
@@ -584,6 +586,7 @@ td{color:rgba(255,255,255,.85)}
 .day-detail .session-card .sc-badge.badge-talent{border-color:#fff;color:#fff}
 .day-detail .session-card .sc-badge.badge-idp{border-color:var(--pink-deep);color:var(--pink-deep)}
 .day-detail .session-card .sc-badge.badge-holiday{border-color:var(--grey);color:var(--grey)}
+.day-detail .session-card .sc-badge.badge-game1ai{border-color:var(--gold);color:var(--gold)}
 .social-icons{
   display:flex;
   flex-wrap:wrap;
@@ -886,6 +889,7 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
         <a href="#amclub">7AM Club</a>
         <a href="#talent">Talent Sessions</a>
         <a href="#idp">IDP Sessions</a>
+        <a href="#game1ai">Game1.AI Testing</a>
         <a href="#holidayseries">Holiday Series</a>
         <a href="#kalender">Kalender</a>
       </nav>
@@ -925,6 +929,17 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
           </dl>
         </div>
         <div class="summary-card">
+          <h3>Game1.AI Testing</h3>
+          <dl>
+            <div class="row"><dt>Dag</dt><dd>Zon</dd></div>
+            <div class="row"><dt>Timing</dt><dd>14:00–16:00</dd></div>
+            <div class="row"><dt>Locatie</dt><dd>VC Leest</dd></div>
+            <div class="row"><dt>#Spelers</dt><dd>N.A.</dd></div>
+            <div class="row"><dt>Veld</dt><dd>Kunstgras</dd></div>
+            <div class="row"><dt>Focus</dt><dd>AI-testing &amp; profiling</dd></div>
+          </dl>
+        </div>
+        <div class="summary-card">
           <h3>Holiday Series</h3>
           <dl>
             <div class="row"><dt>Dag</dt><dd>Dagelijks*</dd></div>
@@ -953,6 +968,7 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
         <button type="button" class="cal-filter" data-type="talent" data-active="true"><span class="cal-swatch" style="background:#fff"></span>Talent Sessions</button>
         <button type="button" class="cal-filter" data-type="idp" data-active="true"><span class="cal-swatch" style="background:var(--pink-deep)"></span>IDP Sessions</button>
         <button type="button" class="cal-filter" data-type="holiday" data-active="true"><span class="cal-swatch" style="background:var(--grey)"></span>Holiday Series</button>
+        <button type="button" class="cal-filter" data-type="game1ai" data-active="true"><span class="cal-swatch" style="background:var(--gold)"></span>Game1.AI Testing</button>
       </div>
 
       <div class="cal-months" id="calMonths"></div>
@@ -1083,7 +1099,7 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
       <h3>Planning</h3>
       <div class="date-chips-group">
         <div class="date-chips-month"><span class="month-label">Sep '26</span></div>
-        <div class="date-chips"><span class="date-chip">20/9</span><span class="date-chip">27/9</span></div>
+        <div class="date-chips"><span class="date-chip">20/9</span></div>
         <div class="date-chips-month"><span class="month-label">Okt '26</span></div>
         <div class="date-chips"><span class="date-chip">4/10</span><span class="date-chip">11/10</span><span class="date-chip">18/10</span></div>
         <div class="date-chips-month"><span class="month-label">Nov '26</span></div>
@@ -1092,6 +1108,27 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
         <div class="date-chips"><span class="date-chip">6/12</span><span class="date-chip">21/12</span><span class="date-chip">22/12</span></div>
         <p class="chips-note">Januari – maart 2027: data volgt</p>
       </div>
+      <p><a href="my-rise.html" class="btn">Registreer via My Rise</a></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap program-block" id="game1ai">
+      <h2>Game1.AI Testing</h2>
+      <p>Rise Academy werkt samen met <a href="https://www.game1.ai" target="_blank" rel="noopener">Game1.AI</a> om de ontwikkeling van onze spelers objectief te meten, naast de dagelijkse opvolging door onze coaches. Waar een coach een speler van dichtbij kent, plaatst Game1.AI Testing daar een cijfermatige, gestandaardiseerde laag bovenop — benchmarked tegen data van spelers wereldwijd. Zo krijgen we een scherper en objectiever beeld van de sterktes, zwaktes en het groeipotentieel van elke speler, wat ons toelaat om onze programma's — en in het bijzonder de IDP Sessions — nog gerichter af te stemmen op wat elke speler individueel nodig heeft, met een data-driven opvolging doorheen het seizoen.</p>
+
+      <div class="info-strip">
+        <div><span class="info-label">Dag</span><span class="info-value">Zondag</span></div>
+        <div><span class="info-label">Locatie</span><span class="info-value">VC Leest — Vinkstraat 29, 2811 Leest (Kunstgras)</span></div>
+        <div><span class="info-label">Timing</span><span class="info-value">14:00–16:00</span></div>
+      </div>
+      <p class="chips-note">Game1.AI Testing wordt sporadisch georganiseerd, niet wekelijks — data worden telkens vooraf aangekondigd via My Rise.</p>
+
+      <h3>Wat</h3>
+      <p>Elke speler doorloopt een testbatterij op vier domeinen: Technisch, Maturiteit, Persoonlijkheid en Game Situaties. Dat resulteert in een individueel profiel waarmee we, samen met de coach, de concrete focuspunten bepalen die verder uitgewerkt worden in onze eigen trainingen — onder meer tijdens de IDP Sessions.</p>
+      <h3>Doelgroep</h3>
+      <p><span class="profile-line">Voor spelers die hun ontwikkeling objectief willen laten meten en gericht willen verbeteren — in het bijzonder spelers die IDP Sessions volgen.</span><br>Geboortejaren 2013–2014–2015–2016 (8v8)</p>
+
       <p><a href="my-rise.html" class="btn">Registreer via My Rise</a></p>
     </div>
   </section>
@@ -1182,13 +1219,15 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
     amclub:  {label:'7AM Club',        badge:'badge-amclub'},
     talent:  {label:'Talent Sessions', badge:'badge-talent'},
     idp:     {label:'IDP Sessions',    badge:'badge-idp'},
-    holiday: {label:'Holiday Series',  badge:'badge-holiday'}
+    holiday: {label:'Holiday Series',  badge:'badge-holiday'},
+    game1ai: {label:'Game1.AI Testing', badge:'badge-game1ai'}
   };
 
   var LOC_AMCLUB = 'Sporthal Paardenstraatje, Mechelen';
   var LOC_TALENT = 'KFC Muizen';
   var LOC_IDP    = 'VC Leest';
   var LOC_HOLIDAY = 'KFC Muizen';
+  var LOC_GAME1AI = 'VC Leest';
 
   var SESSIONS = [
     // 7AM Club
@@ -1213,7 +1252,7 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
     {date:'2026-11-25',type:'talent',time:'15:00–17:30',loc:LOC_TALENT},
     // IDP Sessions (regular)
     {date:'2026-09-20',type:'idp',time:'14:00–15:00',loc:LOC_IDP},
-    {date:'2026-09-27',type:'idp',time:'14:00–15:00',loc:LOC_IDP},
+    // 27/9 vervangen door Game1.AI Testing — zie verderop.
     {date:'2026-10-04',type:'idp',time:'14:00–15:00',loc:LOC_IDP},
     {date:'2026-10-11',type:'idp',time:'14:00–15:00',loc:LOC_IDP},
     {date:'2026-10-18',type:'idp',time:'14:00–15:00',loc:LOC_IDP},
@@ -1229,7 +1268,9 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
     {date:'2026-12-21',type:'holiday',time:'11u–12u',loc:LOC_HOLIDAY,note:'IDP'},
     {date:'2026-12-21',type:'holiday',time:'13u30–15u',loc:LOC_HOLIDAY,note:'Talent'},
     {date:'2026-12-22',type:'holiday',time:'11u–12u',loc:LOC_HOLIDAY,note:'IDP'},
-    {date:'2026-12-22',type:'holiday',time:'13u30–15u',loc:LOC_HOLIDAY,note:'Talent'}
+    {date:'2026-12-22',type:'holiday',time:'13u30–15u',loc:LOC_HOLIDAY,note:'Talent'},
+    // Game1.AI Testing
+    {date:'2026-09-27',type:'game1ai',time:'14:00–16:00',loc:LOC_GAME1AI}
   ];
 
   var MONTHS = [
