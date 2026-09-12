@@ -17,6 +17,7 @@
   --pink:#F38CAA;
   --pink-deep:#C23D63;
   --grey:#9a9a9a;
+  --gold:#D9AE55;
   --line:rgba(255,255,255,.25);
   --panel:rgba(255,255,255,.05);
   --max:980px;
@@ -328,8 +329,13 @@ td{color:rgba(255,255,255,.85)}
    card visibly shorter than the other three. This way all four cards keep
    an identical height and the note sits outside the border, exactly like
    the "Januari – maart 2027" note under the calendar. */
-.summary-grid-note{grid-column:4;margin-top:0}
-@media (max-width:900px){.summary-grid-note{grid-column:2}}
+/* De voetnoot hoort onder de Holiday Series-kaart te staan, en die staat niet
+   op elke pagina in dezelfde kolom: op de homepagina is het de 4e van 4 kaarten
+   (rij 1, kolom 4), op de programmapagina de 5e van 5 (rij 2, kolom 1). Daarom
+   de kolom instelbaar per pagina via --note-col, met de homepagina als
+   standaard. Zet je er een kaart bij, dan moet --note-col mee aangepast. */
+.summary-grid-note{grid-column:var(--note-col,4);margin-top:0}
+@media (max-width:900px){.summary-grid-note{grid-column:var(--note-col-md,2)}}
 @media (max-width:520px){.summary-grid-note{grid-column:1}}
 .summary-card{
   background:var(--panel);
@@ -355,6 +361,10 @@ td{color:rgba(255,255,255,.85)}
 .summary-card .row:first-child{border-top:none}
 .summary-card .row dt{color:var(--grey);text-transform:uppercase;letter-spacing:.04em;font-size:11px}
 .summary-card .row dd{margin:0;text-align:right;color:rgba(255,255,255,.9)}
+
+/* Game1.AI Testing — kleuraccent in de kalender en de dagdetails */
+.cal-dot.dot-game1ai{background:var(--gold)}
+.day-detail .session-card .sc-badge.badge-game1ai{border-color:var(--gold);color:var(--gold)}
 
 /* Info strip: replaces the small Dag / Locatie / Timing table */
 .info-strip{
@@ -899,4 +909,90 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
   .hero-actions .btn,.hero-actions .btn-outline,
   .cta-actions .btn,.cta-actions .btn-outline{width:100%;text-align:center}
   .breadcrumb{padding:12px 16px 0}
+}
+
+/* ---- Aankondigingsbanner (Game1.AI Testing) ----
+   Visueel afgestemd op de flyer: donker verloop van een wazige horizon naar
+   zwart, roze hoekhaakjes, een monospace datumregel en het pose-skelet met
+   regenboogverbindingen. Dat skelet is inline SVG en geen afbeelding, zodat
+   de banner geen extra verzoek kost.
+   Bewust statisch: schuivende tekst leest als reclame, is lastig aan te
+   klikken en wordt genegeerd bij prefers-reduced-motion. */
+.promo{
+  position:relative;
+  display:block;
+  overflow:hidden;
+  max-width:820px;
+  margin:0 auto 30px;
+  padding:22px 26px;
+  border:1px solid rgba(243,140,170,.45);
+  border-radius:14px;
+  color:var(--white);
+  text-align:left;
+  background:
+    radial-gradient(120% 150% at 82% 8%, rgba(150,170,190,.20) 0%, rgba(60,70,85,.10) 38%, rgba(0,0,0,0) 70%),
+    linear-gradient(180deg, #0d1014 0%, #07080a 55%, #000 100%);
+}
+.promo:hover{border-color:var(--pink);text-decoration:none}
+.promo:hover .promo-cta{color:var(--white)}
+
+/* De Game1.AI player map, rechts in de banner. Een lichte schermafbeelding
+   op een donker vlak, dus links weggemaskerd met een verloop: zo lost hij op
+   in het paneel in plaats van er als een rechthoek op geplakt te liggen. */
+.promo-figure{
+  position:absolute;top:0;right:0;bottom:0;
+  width:42%;z-index:0;pointer-events:none;
+}
+.promo-figure img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  opacity:.68;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 62%);
+  mask-image:linear-gradient(90deg,transparent 0%,#000 62%);
+}
+.promo:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+
+/* hoekhaakjes, zoals het kader rond het beeld op de flyer */
+.promo::before,.promo::after{
+  content:"";position:absolute;width:16px;height:16px;pointer-events:none;
+}
+.promo::before{top:10px;left:10px;border-top:1px solid rgba(243,140,170,.75);border-left:1px solid rgba(243,140,170,.75)}
+.promo::after{bottom:10px;right:10px;border-bottom:1px solid rgba(243,140,170,.75);border-right:1px solid rgba(243,140,170,.75)}
+
+.promo-body{position:relative;z-index:1;display:block;max-width:60%}
+
+.promo-eyebrow{
+  display:block;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--pink);margin:0 0 8px;
+}
+.promo-title{
+  display:block;font-size:clamp(19px,2.4vw,26px);font-weight:800;
+  line-height:1.15;letter-spacing:-.01em;margin:0 0 10px;color:var(--white);
+}
+.promo-meta{
+  display:block;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--pink);margin:0 0 4px;
+}
+.promo-sub{display:block;font-size:13px;color:rgba(255,255,255,.62);margin:0 0 16px}
+.promo-cta{
+  display:inline-block;
+  font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--pink);
+}
+
+@media (max-width:720px){
+  /* Op een smal scherm werkt het beeld niet als achtergrond: het wordt een
+     vlek onder de tekst. Daarom hier als strook bovenaan, zoals de kop van
+     een flyer, met de tekst er volledig los onder. */
+  .promo{padding:0}
+  .promo-figure{position:static;display:block;width:100%;height:96px}
+  .promo-figure img{
+    opacity:1;object-position:center 42%;
+    -webkit-mask-image:linear-gradient(180deg,#000 45%,transparent 100%);
+    mask-image:linear-gradient(180deg,#000 45%,transparent 100%);
+  }
+  .promo-body{max-width:100%;padding:14px 20px 20px}
 }

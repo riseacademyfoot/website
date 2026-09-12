@@ -25,6 +25,7 @@
   --pink:#F38CAA;
   --pink-deep:#C23D63;
   --grey:#9a9a9a;
+  --gold:#D9AE55;
   --line:rgba(255,255,255,.25);
   --panel:rgba(255,255,255,.05);
   --max:980px;
@@ -299,8 +300,8 @@ td{color:rgba(255,255,255,.85)}
 }
 @media (max-width:900px){.summary-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:520px){.summary-grid{grid-template-columns:1fr}}
-.summary-grid-note{grid-column:4;margin-top:0}
-@media (max-width:900px){.summary-grid-note{grid-column:2}}
+.summary-grid-note{grid-column:var(--note-col,4);margin-top:0}
+@media (max-width:900px){.summary-grid-note{grid-column:var(--note-col-md,2)}}
 @media (max-width:520px){.summary-grid-note{grid-column:1}}
 .summary-card{
   background:var(--panel);
@@ -326,6 +327,8 @@ td{color:rgba(255,255,255,.85)}
 .summary-card .row:first-child{border-top:none}
 .summary-card .row dt{color:var(--grey);text-transform:uppercase;letter-spacing:.04em;font-size:11px}
 .summary-card .row dd{margin:0;text-align:right;color:rgba(255,255,255,.9)}
+.cal-dot.dot-game1ai{background:var(--gold)}
+.day-detail .session-card .sc-badge.badge-game1ai{border-color:var(--gold);color:var(--gold)}
 .info-strip{
   display:flex;
   flex-wrap:wrap;
@@ -824,6 +827,73 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
   .hero-actions .btn,.hero-actions .btn-outline,
   .cta-actions .btn,.cta-actions .btn-outline{width:100%;text-align:center}
   .breadcrumb{padding:12px 16px 0}
+}
+.promo{
+  position:relative;
+  display:block;
+  overflow:hidden;
+  max-width:820px;
+  margin:0 auto 30px;
+  padding:22px 26px;
+  border:1px solid rgba(243,140,170,.45);
+  border-radius:14px;
+  color:var(--white);
+  text-align:left;
+  background:
+    radial-gradient(120% 150% at 82% 8%, rgba(150,170,190,.20) 0%, rgba(60,70,85,.10) 38%, rgba(0,0,0,0) 70%),
+    linear-gradient(180deg, #0d1014 0%, #07080a 55%, #000 100%);
+}
+.promo:hover{border-color:var(--pink);text-decoration:none}
+.promo:hover .promo-cta{color:var(--white)}
+.promo-figure{
+  position:absolute;top:0;right:0;bottom:0;
+  width:42%;z-index:0;pointer-events:none;
+}
+.promo-figure img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  opacity:.68;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 62%);
+  mask-image:linear-gradient(90deg,transparent 0%,#000 62%);
+}
+.promo:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+.promo::before,.promo::after{
+  content:"";position:absolute;width:16px;height:16px;pointer-events:none;
+}
+.promo::before{top:10px;left:10px;border-top:1px solid rgba(243,140,170,.75);border-left:1px solid rgba(243,140,170,.75)}
+.promo::after{bottom:10px;right:10px;border-bottom:1px solid rgba(243,140,170,.75);border-right:1px solid rgba(243,140,170,.75)}
+.promo-body{position:relative;z-index:1;display:block;max-width:60%}
+.promo-eyebrow{
+  display:block;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--pink);margin:0 0 8px;
+}
+.promo-title{
+  display:block;font-size:clamp(19px,2.4vw,26px);font-weight:800;
+  line-height:1.15;letter-spacing:-.01em;margin:0 0 10px;color:var(--white);
+}
+.promo-meta{
+  display:block;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--pink);margin:0 0 4px;
+}
+.promo-sub{display:block;font-size:13px;color:rgba(255,255,255,.62);margin:0 0 16px}
+.promo-cta{
+  display:inline-block;
+  font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--pink);
+}
+@media (max-width:720px){
+  
+  .promo{padding:0}
+  .promo-figure{position:static;display:block;width:100%;height:96px}
+  .promo-figure img{
+    opacity:1;object-position:center 42%;
+    -webkit-mask-image:linear-gradient(180deg,#000 45%,transparent 100%);
+    mask-image:linear-gradient(180deg,#000 45%,transparent 100%);
+  }
+  .promo-body{max-width:100%;padding:14px 20px 20px}
 }</style><!--/css-->
 <script type="application/ld+json">
 {
@@ -921,6 +991,26 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
   <section class="hero">
     <div class="wrap">
       <span class="eyebrow">Voetbalacademie · regio Mechelen</span>
+      <a class="promo" href="programmas.html#game1ai" id="promoGame1" data-tot="2026-09-27">
+        <picture class="promo-figure">
+          <source type="image/avif" srcset="assets/images/game1-map-340.avif 340w, assets/images/game1-map-560.avif 560w" sizes="(max-width:720px) 100vw, 345px">
+          <img src="assets/images/game1-map-560.jpg" srcset="assets/images/game1-map-340.jpg 340w, assets/images/game1-map-560.jpg 560w" sizes="(max-width:720px) 100vw, 345px" width="805" height="805" loading="lazy" decoding="async" alt="">
+        </picture>
+        <span class="promo-body">
+          <span class="promo-eyebrow">Train · Meet · Ontwikkel</span>
+          <span class="promo-title">Discover your potential.</span>
+          <span class="promo-meta">Zo 27 sept 2026 · 14:00–16:00 · VC Leest</span>
+          <span class="promo-sub">Datagedreven spelersanalyse met Game1.AI — gratis voor leden.</span>
+          <span class="promo-cta">Ontdek de testing →</span>
+        </span>
+      </a>
+      <script>
+      /* Verbergt de aankondiging zodra het event voorbij is, zodat er geen
+         verlopen datum blijft staan. Staat vlak na het element zelf, zodat
+         er geen sprong in de opmaak ontstaat. */
+      (function(){var a=document.getElementById('promoGame1');
+        if(a && new Date() > new Date(a.dataset.tot+'T23:59:59')) a.remove();})();
+      </script>
       <p class="lede">Rise Academy biedt jonge voetballers extra kansen om zich te ontwikkelen in een positieve en kwalitatieve voetbalomgeving. Rise staat letterlijk voor groeien, vooruitgaan. Daarom staat in onze trainingen persoonlijke aandacht voorop, met een duidelijke focus op leren, ontwikkelen en plezier beleven — als voetballer én als persoon.</p>
       <div class="hero-actions">
         <a href="my-rise.html" class="btn">Schrijf je in via My Rise</a>
