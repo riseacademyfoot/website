@@ -8,16 +8,7 @@
   font-style:normal;
   font-weight:400 800;
   font-display:swap;
-  src:url('../fonts/raleway-latin.woff2') format('woff2');
-  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face{
-  font-family:'Raleway';
-  font-style:normal;
-  font-weight:400 800;
-  font-display:swap;
-  src:url('../fonts/raleway-latin-ext.woff2') format('woff2');
-  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+  src:url('../fonts/raleway.woff2') format('woff2');
 }
 
 :root{
@@ -26,6 +17,7 @@
   --pink:#F38CAA;
   --pink-deep:#C23D63;
   --grey:#9a9a9a;
+  --gold:#D9AE55;
   --line:rgba(255,255,255,.25);
   --panel:rgba(255,255,255,.05);
   --max:980px;
@@ -337,8 +329,13 @@ td{color:rgba(255,255,255,.85)}
    card visibly shorter than the other three. This way all four cards keep
    an identical height and the note sits outside the border, exactly like
    the "Januari – maart 2027" note under the calendar. */
-.summary-grid-note{grid-column:4;margin-top:0}
-@media (max-width:900px){.summary-grid-note{grid-column:2}}
+/* De voetnoot hoort onder de Holiday Series-kaart te staan, en die staat niet
+   op elke pagina in dezelfde kolom: op de homepagina is het de 4e van 4 kaarten
+   (rij 1, kolom 4), op de programmapagina de 5e van 5 (rij 2, kolom 1). Daarom
+   de kolom instelbaar per pagina via --note-col, met de homepagina als
+   standaard. Zet je er een kaart bij, dan moet --note-col mee aangepast. */
+.summary-grid-note{grid-column:var(--note-col,4);margin-top:0}
+@media (max-width:900px){.summary-grid-note{grid-column:var(--note-col-md,2)}}
 @media (max-width:520px){.summary-grid-note{grid-column:1}}
 .summary-card{
   background:var(--panel);
@@ -364,6 +361,10 @@ td{color:rgba(255,255,255,.85)}
 .summary-card .row:first-child{border-top:none}
 .summary-card .row dt{color:var(--grey);text-transform:uppercase;letter-spacing:.04em;font-size:11px}
 .summary-card .row dd{margin:0;text-align:right;color:rgba(255,255,255,.9)}
+
+/* Game1.AI Testing — kleuraccent in de kalender en de dagdetails */
+.cal-dot.dot-game1ai{background:var(--gold)}
+.day-detail .session-card .sc-badge.badge-game1ai{border-color:var(--gold);color:var(--gold)}
 
 /* Info strip: replaces the small Dag / Locatie / Timing table */
 .info-strip{
@@ -879,22 +880,6 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
 }
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
 
-/* ---- Praktische gegevens op de homepagina ---- */
-.facts{
-  display:grid;gap:18px;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  margin:0;padding:0;
-}
-.facts>div{
-  border:1px solid var(--line);border-radius:12px;
-  background:var(--panel);padding:20px 18px;
-}
-.facts dt{
-  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--pink);font-weight:800;margin:0 0 8px;
-}
-.facts dd{margin:0;font-size:14px;line-height:1.65}
-
 /* ---- Veelgestelde vragen ---- */
 .faq{border-top:1px solid var(--line);margin-top:8px}
 .faq details{border-bottom:1px solid var(--line);padding:16px 0}
@@ -924,4 +909,115 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
   .hero-actions .btn,.hero-actions .btn-outline,
   .cta-actions .btn,.cta-actions .btn-outline{width:100%;text-align:center}
   .breadcrumb{padding:12px 16px 0}
+}
+
+/* ---- Aankondigingsbanner: Game1.AI Testing ----
+   Nagebouwd naar de flyer, maar in tekst in plaats van als afbeelding: een
+   banner van 1920px met tekst erin wordt op een telefoon van 375px vijf keer
+   verkleind, waardoor de kleinste regels onleesbaar worden. In code schaalt
+   alles mee en blijft de inhoud vindbaar en voorleesbaar. */
+.promo{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:30px;
+  max-width:940px;
+  margin:0 auto 30px;
+  padding:26px 30px;
+  border:1px solid rgba(243,140,170,.45);
+  border-radius:14px;
+  background:#000;
+  color:var(--white);
+  text-align:left;
+}
+.promo:hover{border-color:var(--pink);text-decoration:none}
+.promo:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+.promo::before,.promo::after{content:"";position:absolute;width:14px;height:14px;pointer-events:none}
+.promo::before{top:9px;left:9px;border-top:1px solid rgba(243,140,170,.75);border-left:1px solid rgba(243,140,170,.75)}
+.promo::after{bottom:9px;right:9px;border-bottom:1px solid rgba(243,140,170,.75);border-right:1px solid rgba(243,140,170,.75)}
+.promo-body{flex:1 1 auto;display:block;min-width:0}
+
+/* logoblok */
+.promo-lockup{display:flex;align-items:center;gap:12px;margin:0 0 16px}
+.promo-g1{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:15px;letter-spacing:.16em;color:rgba(255,255,255,.92);font-weight:400;
+}
+.promo-x{color:rgba(255,255,255,.4);font-size:13px}
+.promo-lockup img{width:34px;height:34px;border-radius:50%;display:block}
+
+.promo-eyebrow{
+  display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--pink);margin:0 0 10px;
+}
+.promo-title,.promo-claim{
+  display:block;font-size:clamp(19px,2.2vw,25px);font-weight:800;
+  line-height:1.14;letter-spacing:-.01em;margin:0;
+}
+.promo-title{color:var(--white)}
+.promo-claim{color:var(--pink);margin-bottom:14px}
+
+.promo-date{
+  display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(255,255,255,.92);padding-top:12px;margin:0 0 16px;
+  border-top:1px solid rgba(243,140,170,.3);
+}
+
+/* wat je krijgt */
+.promo-listlabel{
+  display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin:0 0 8px;
+}
+.promo-list{display:block;margin:0 0 16px}
+.promo-list span{display:block;font-size:13.5px;font-weight:700;color:var(--white);margin:0 0 5px;padding-left:26px;position:relative}
+.promo-list span::before{
+  content:attr(data-n);position:absolute;left:0;top:1px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:9.5px;font-weight:400;color:var(--pink);letter-spacing:.1em;
+}
+
+/* prijs */
+.promo-price{display:flex;align-items:flex-start;gap:18px;margin:0 0 16px;flex-wrap:wrap}
+.promo-amount{flex:none}
+.promo-amount b{display:block;font-size:30px;font-weight:800;line-height:1;color:var(--white)}
+.promo-amount i{
+  display:block;font-style:normal;margin-top:4px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);
+}
+.promo-voucher{flex:1 1 240px;border-left:1px solid rgba(243,140,170,.3);padding-left:18px}
+.promo-voucher b{display:block;font-size:13.5px;font-weight:700;color:var(--pink);margin:0 0 3px}
+.promo-voucher i{display:block;font-style:normal;font-size:12px;color:rgba(255,255,255,.6);line-height:1.45}
+
+/* actie */
+.promo-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.promo-btn{
+  display:inline-block;background:var(--pink);color:#000;
+  font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  padding:13px 24px;border-radius:4px;
+}
+.promo:hover .promo-btn{background:#fff}
+.promo-note{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45);
+}
+
+/* de inzet */
+.promo-screen{
+  flex:none;display:block;width:200px;
+  border:1px solid rgba(255,255,255,.22);border-radius:10px;overflow:hidden;
+  box-shadow:0 10px 28px rgba(0,0,0,.7);line-height:0;
+}
+.promo-screen img{width:100%;height:auto;display:block}
+
+@media (max-width:820px){
+  .promo{flex-direction:column-reverse;align-items:stretch;gap:20px;padding:22px}
+  .promo-screen{width:100%;max-width:170px}
+  .promo-title,.promo-claim{font-size:20px}
+  .promo-voucher{border-left:none;padding-left:0;flex-basis:100%}
+  /* de kleinste labels net iets groter op een telefoon: 9px letterspaced
+     uppercase leest daar te krap */
+  .promo-listlabel,.promo-note,.promo-amount i{font-size:10.5px}
+  .promo-eyebrow{font-size:10.5px}
 }
