@@ -243,32 +243,6 @@ ul.plain li{margin-bottom:6px}
    pagina in aanbouw, wat het Google Ad Grants-beleid als afkeuringsgrond
    noemt. Een egaal vlak met silhouet oogt afgewerkt. Zodra er foto's zijn,
    vervang je de <svg> door een <img> en blijft de rest werken. */
-.coach-photo{
-  width:100%;
-  aspect-ratio:1/1;
-  border-radius:8px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.05);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  margin-bottom:16px;
-}
-.coach-photo svg{
-  width:52%;
-  height:52%;
-  /* 16% wit kwam neer op rgb(52,52,52) op een vak van rgb(13,13,13) —
-     technisch aanwezig maar in de praktijk onzichtbaar. 32% geeft
-     ongeveer rgb(90,90,90): duidelijk leesbaar als silhouet, maar nog
-     steeds ondergeschikt aan de naam en de tekst eronder. */
-  fill:rgba(255,255,255,.32);
-}
-.coach-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
 .coach-card h3{
   color:var(--pink);
   font-size:17px;
@@ -835,7 +809,6 @@ footer p{color:var(--grey);font-size:12px;margin:0 0 6px}
   .site-header{padding:26px 16px 14px}
   section{padding:0 16px 46px}
 }
-
 
 /* ---- Navigatie: overslaan-link, logo als link, kruimelpad ---- */
 .skip-link{
