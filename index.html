@@ -895,7 +895,18 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
   
   .promo-listlabel,.promo-note,.promo-amount i{font-size:10.5px}
   .promo-eyebrow{font-size:10.5px}
-}</style><!--/css-->
+}
+.prices{
+  list-style:none;margin:0 0 14px;padding:0;
+  max-width:420px;border-top:1px dashed var(--line);
+}
+.prices li{
+  display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px;
+}
+.prices li span{color:rgba(255,255,255,.75)}
+.prices li b{color:var(--white);font-weight:800;white-space:nowrap}
+.prices li.is-highlight span,.prices li.is-highlight b{color:var(--pink)}</style><!--/css-->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

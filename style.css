@@ -243,32 +243,6 @@ ul.plain li{margin-bottom:6px}
    pagina in aanbouw, wat het Google Ad Grants-beleid als afkeuringsgrond
    noemt. Een egaal vlak met silhouet oogt afgewerkt. Zodra er foto's zijn,
    vervang je de <svg> door een <img> en blijft de rest werken. */
-.coach-photo{
-  width:100%;
-  aspect-ratio:1/1;
-  border-radius:8px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.05);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  margin-bottom:16px;
-}
-.coach-photo svg{
-  width:52%;
-  height:52%;
-  /* 16% wit kwam neer op rgb(52,52,52) op een vak van rgb(13,13,13) —
-     technisch aanwezig maar in de praktijk onzichtbaar. 32% geeft
-     ongeveer rgb(90,90,90): duidelijk leesbaar als silhouet, maar nog
-     steeds ondergeschikt aan de naam en de tekst eronder. */
-  fill:rgba(255,255,255,.32);
-}
-.coach-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
 .coach-card h3{
   color:var(--pink);
   font-size:17px;
@@ -836,7 +810,6 @@ footer p{color:var(--grey);font-size:12px;margin:0 0 6px}
   section{padding:0 16px 46px}
 }
 
-
 /* ---- Navigatie: overslaan-link, logo als link, kruimelpad ---- */
 .skip-link{
   position:absolute;left:-9999px;top:0;
@@ -1024,3 +997,19 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
   .promo-listlabel,.promo-note,.promo-amount i{font-size:10.5px}
   .promo-eyebrow{font-size:10.5px}
 }
+
+/* ---- Tarieven per programma ----
+   Zelfde rijopbouw als de samenvattingskaarten bovenaan: label links,
+   bedrag rechts, streepjeslijn ertussen. Informatief — boeken gebeurt
+   in My Rise. */
+.prices{
+  list-style:none;margin:0 0 14px;padding:0;
+  max-width:420px;border-top:1px dashed var(--line);
+}
+.prices li{
+  display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px;
+}
+.prices li span{color:rgba(255,255,255,.75)}
+.prices li b{color:var(--white);font-weight:800;white-space:nowrap}
+.prices li.is-highlight span,.prices li.is-highlight b{color:var(--pink)}
