@@ -1016,7 +1016,18 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
 .prices li.is-highlight span,.prices li.is-highlight b{color:var(--pink)}
 
 /* ---- Borussia Dortmund Experience ---- */
+/* Op deze pagina wordt alles wat roze is geel. Enkele accenten blijven roze:
+   het My Rise-menu-item en het logo houden hun eigen kleur. */
+body.page-bvb{--pink:var(--bvb)}
+body.page-bvb nav.site-nav a.nav-myrise,
+body.page-bvb nav.site-nav a.nav-myrise:hover{color:#F38CAA;border-bottom-color:#F38CAA}
+body.page-bvb a.logo-badge:hover{outline-color:#F38CAA}
 .hero h1.bvb-h1{color:var(--bvb)}
+/* knoppen in Dortmund-geel, alleen op de BVB-pagina */
+.btn-bvb{background:var(--bvb);color:var(--black)}
+.btn-bvb:hover{background:#fff}
+.hero-bvb .hero-actions{justify-content:center}
+.hero-bvb .btn-outline:hover,.cta-bvb .btn-outline:hover{border-color:var(--bvb);color:var(--bvb)}
 nav.site-nav a.nav-bvb{color:var(--bvb);text-align:center}
 nav.site-nav a.nav-bvb:hover{color:#fff}
 @media (max-width:900px){nav.site-nav a.nav-bvb{display:inline-block}nav.site-nav a.nav-bvb .nav-l2{display:block}}
@@ -1028,8 +1039,6 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
   border:1px solid rgba(255,224,0,.5);border-radius:14px;
   background:#000;color:var(--white);text-align:left;
 }
-.bvb-promo:hover{border-color:var(--bvb);text-decoration:none}
-.bvb-promo:focus-visible{outline:2px solid var(--bvb);outline-offset:3px}
 .bvb-promo::before,.bvb-promo::after{content:"";position:absolute;width:14px;height:14px;pointer-events:none}
 .bvb-promo::before{top:9px;left:9px;border-top:1px solid rgba(255,224,0,.8);border-left:1px solid rgba(255,224,0,.8)}
 .bvb-promo::after{bottom:9px;right:9px;border-bottom:1px solid rgba(255,224,0,.8);border-right:1px solid rgba(255,224,0,.8)}
@@ -1052,8 +1061,37 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
   border-top:1px solid rgba(255,224,0,.35);
 }
 .bvb-sub{display:block;font-size:13px;line-height:1.55;color:rgba(255,255,255,.66);margin:0 0 14px}
-.bvb-cta{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--bvb)}
-.bvb-promo:hover .bvb-cta{color:#fff}
+.bvb-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.bvb-flyer:hover{box-shadow:0 10px 28px rgba(255,224,0,.28)}
+.bvb-flyer:focus-visible{outline:2px solid var(--bvb);outline-offset:3px}
+
+/* inhoudsopgave op de BVB-pagina */
+.bvb-toc{border:1px solid rgba(255,224,0,.35);border-radius:14px;background:var(--panel);padding:20px 22px}
+.bvb-toc h2{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bvb);
+  margin:0 0 14px;border:none;padding:0;
+}
+.bvb-toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:9px 10px;margin:0;padding:0}
+.bvb-toc a{
+  display:block;padding:8px 15px;border-radius:30px;
+  border:1px solid rgba(255,224,0,.4);
+  font-size:12.5px;font-weight:700;color:rgba(255,255,255,.9);
+}
+.bvb-toc a:hover,.bvb-toc a:focus-visible{background:var(--bvb);border-color:var(--bvb);color:var(--black);text-decoration:none}
+.bvb-rekening{
+  margin:16px 0 0;padding:16px 18px;border-radius:12px;
+  border:1px solid rgba(255,224,0,.35);background:var(--panel);
+}
+.bvb-rekening dt{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--bvb);margin:0 0 4px;
+}
+.bvb-rekening dd{margin:0 0 14px;font-size:15px;color:var(--white)}
+.bvb-rekening dd:last-of-type{margin-bottom:0}
+.bvb-rekening .iban{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:17px;font-weight:700;letter-spacing:.04em}
+.bvb-rekening .mededeling{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;color:var(--bvb)}
+main section[id]{scroll-margin-top:16px}
 
 /* prijskaarten op de BVB-pagina */
 .bvb-cards{display:grid;gap:20px;grid-template-columns:1fr 1fr;margin:0 0 22px}
@@ -1072,4 +1110,9 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
   .bvb-promo{flex-direction:column-reverse;align-items:stretch;gap:18px;padding:22px}
   .bvb-flyer{width:100%;max-width:240px;align-self:center}
   .bvb-title{font-size:21px}
+  .bvb-actions{justify-content:center}
+}
+@media (max-width:420px){
+  .bvb-actions{flex-direction:column}
+  .bvb-actions .btn{width:100%;text-align:center}
 }

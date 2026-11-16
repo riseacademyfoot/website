@@ -907,7 +907,15 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
 .prices li span{color:rgba(255,255,255,.75)}
 .prices li b{color:var(--white);font-weight:800;white-space:nowrap}
 .prices li.is-highlight span,.prices li.is-highlight b{color:var(--pink)}
+body.page-bvb{--pink:var(--bvb)}
+body.page-bvb nav.site-nav a.nav-myrise,
+body.page-bvb nav.site-nav a.nav-myrise:hover{color:#F38CAA;border-bottom-color:#F38CAA}
+body.page-bvb a.logo-badge:hover{outline-color:#F38CAA}
 .hero h1.bvb-h1{color:var(--bvb)}
+.btn-bvb{background:var(--bvb);color:var(--black)}
+.btn-bvb:hover{background:#fff}
+.hero-bvb .hero-actions{justify-content:center}
+.hero-bvb .btn-outline:hover,.cta-bvb .btn-outline:hover{border-color:var(--bvb);color:var(--bvb)}
 nav.site-nav a.nav-bvb{color:var(--bvb);text-align:center}
 nav.site-nav a.nav-bvb:hover{color:#fff}
 @media (max-width:900px){nav.site-nav a.nav-bvb{display:inline-block}nav.site-nav a.nav-bvb .nav-l2{display:block}}
@@ -917,8 +925,6 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
   border:1px solid rgba(255,224,0,.5);border-radius:14px;
   background:#000;color:var(--white);text-align:left;
 }
-.bvb-promo:hover{border-color:var(--bvb);text-decoration:none}
-.bvb-promo:focus-visible{outline:2px solid var(--bvb);outline-offset:3px}
 .bvb-promo::before,.bvb-promo::after{content:"";position:absolute;width:14px;height:14px;pointer-events:none}
 .bvb-promo::before{top:9px;left:9px;border-top:1px solid rgba(255,224,0,.8);border-left:1px solid rgba(255,224,0,.8)}
 .bvb-promo::after{bottom:9px;right:9px;border-bottom:1px solid rgba(255,224,0,.8);border-right:1px solid rgba(255,224,0,.8)}
@@ -941,8 +947,35 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
   border-top:1px solid rgba(255,224,0,.35);
 }
 .bvb-sub{display:block;font-size:13px;line-height:1.55;color:rgba(255,255,255,.66);margin:0 0 14px}
-.bvb-cta{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--bvb)}
-.bvb-promo:hover .bvb-cta{color:#fff}
+.bvb-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.bvb-flyer:hover{box-shadow:0 10px 28px rgba(255,224,0,.28)}
+.bvb-flyer:focus-visible{outline:2px solid var(--bvb);outline-offset:3px}
+.bvb-toc{border:1px solid rgba(255,224,0,.35);border-radius:14px;background:var(--panel);padding:20px 22px}
+.bvb-toc h2{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bvb);
+  margin:0 0 14px;border:none;padding:0;
+}
+.bvb-toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:9px 10px;margin:0;padding:0}
+.bvb-toc a{
+  display:block;padding:8px 15px;border-radius:30px;
+  border:1px solid rgba(255,224,0,.4);
+  font-size:12.5px;font-weight:700;color:rgba(255,255,255,.9);
+}
+.bvb-toc a:hover,.bvb-toc a:focus-visible{background:var(--bvb);border-color:var(--bvb);color:var(--black);text-decoration:none}
+.bvb-rekening{
+  margin:16px 0 0;padding:16px 18px;border-radius:12px;
+  border:1px solid rgba(255,224,0,.35);background:var(--panel);
+}
+.bvb-rekening dt{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--bvb);margin:0 0 4px;
+}
+.bvb-rekening dd{margin:0 0 14px;font-size:15px;color:var(--white)}
+.bvb-rekening dd:last-of-type{margin-bottom:0}
+.bvb-rekening .iban{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:17px;font-weight:700;letter-spacing:.04em}
+.bvb-rekening .mededeling{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;color:var(--bvb)}
+main section[id]{scroll-margin-top:16px}
 .bvb-cards{display:grid;gap:20px;grid-template-columns:1fr 1fr;margin:0 0 22px}
 .bvb-card{
   background:var(--panel);border:1px solid var(--line);
@@ -958,6 +991,11 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
   .bvb-promo{flex-direction:column-reverse;align-items:stretch;gap:18px;padding:22px}
   .bvb-flyer{width:100%;max-width:240px;align-self:center}
   .bvb-title{font-size:21px}
+  .bvb-actions{justify-content:center}
+}
+@media (max-width:420px){
+  .bvb-actions{flex-direction:column}
+  .bvb-actions .btn{width:100%;text-align:center}
 }</style><!--/css-->
 <script type="application/ld+json">
 {
@@ -980,7 +1018,7 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
 }
 </script>
 </head>
-<body>
+<body class="page-bvb">
 
 <a class="skip-link" href="#content">Naar de inhoud</a>
 
@@ -1009,13 +1047,13 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
 
 
 <main id="content">
-  <section class="hero">
+  <section class="hero hero-bvb">
     <div class="wrap">
       <span class="eyebrow">Voetbaltrip &middot; 12&ndash;14 februari 2027</span>
       <h1 class="bvb-h1">Rise Academy goes Borussia Dortmund</h1>
       <p class="lede">Een lang weekend in Dortmund waarin voetballen en beleven samenkomen: trainen onder leiding van BVB-trainers, een vriendschappelijke wedstrijd tegen een partnerteam, een rondleiding door het Signal Iduna Park en de thuiswedstrijd tegen VfB Stuttgart vanop de tribune.</p>
       <div class="hero-actions">
-        <a href="https://forms.gle/NgrN28SZeVnuKRs37" target="_blank" rel="noopener" class="btn">Schrijf je in</a>
+        <a href="https://forms.gle/NgrN28SZeVnuKRs37" target="_blank" rel="noopener" class="btn btn-bvb">Schrijf je in</a>
         <a href="#programma" class="btn-outline">Bekijk het programma</a>
       </div>
     </div>
@@ -1033,7 +1071,26 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
   </section>
 
   <section>
-    <div class="wrap" id="programma">
+    <div class="wrap">
+      <nav class="bvb-toc" aria-label="Op deze pagina">
+        <h2>Op deze pagina</h2>
+        <ul>
+          <li><a href="#programma">Wat we gaan doen</a></li>
+          <li><a href="#kosten">Wat het kost</a></li>
+          <li><a href="#verblijf">Verblijf</a></li>
+          <li><a href="#vervoer">Vervoer</a></li>
+          <li><a href="#voor-wie">Voor wie en wanneer</a></li>
+          <li><a href="#inschrijven">Inschrijven en betalen</a></li>
+          <li><a href="#annulering">Annuleringsvoorwaarden</a></li>
+          <li><a href="#verzekering">Verzekering</a></li>
+          <li><a href="#faq">Veelgestelde vragen</a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <section id="programma">
+    <div class="wrap">
       <h2>Wat we gaan doen</h2>
       <p>De trip draait om meer dan een wedstrijd bijwonen. We trainen, we spelen, en we kijken achter de schermen bij een club die van zijn jeugdopleiding een handelsmerk heeft gemaakt.</p>
       <h3>Trainen bij Borussia Dortmund</h3>
@@ -1045,7 +1102,7 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
     </div>
   </section>
 
-  <section>
+  <section id="kosten">
     <div class="wrap">
       <h2>Wat het kost</h2>
       <div class="bvb-cards">
@@ -1077,7 +1134,7 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
     </div>
   </section>
 
-  <section>
+  <section id="verblijf">
     <div class="wrap">
       <h2>Verblijf</h2>
       <p>We logeren in de <a href="https://www.jugendherberge.de/en/youth-hostels/dortmund/" target="_blank" rel="noopener">Jugendherberge Dortmund</a>. Voor spelers zijn twee overnachtingen met ontbijt in de prijs inbegrepen.</p>
@@ -1085,7 +1142,7 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
     </div>
   </section>
 
-  <section>
+  <section id="vervoer">
     <div class="wrap">
       <h2>Vervoer</h2>
       <p>We reizen niet met een bus. De verplaatsing naar Dortmund en terug gebeurt met eigen wagens, en ook ter plaatse rekenen we op ouders met een wagen om spelers en begeleiding tussen de jeugdherberg, de trainingen en het stadion te brengen.</p>
@@ -1093,7 +1150,7 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
     </div>
   </section>
 
-  <section>
+  <section id="voor-wie">
     <div class="wrap">
       <h2>Voor wie en wanneer</h2>
       <p>De trip is bedoeld voor <strong>spelers geboren in 2014 en 2015</strong>. Iedereen uit die twee geboortejaren mag zich aanmelden, maar het aantal plaatsen is beperkt. <strong>Spelers die IDP Sessions volgen krijgen voorrang</strong>: zij worden eerst ingedeeld. Blijven er daarna plaatsen over, dan vullen we aan met de overige inschrijvingen, in volgorde van inschrijving.</p>
@@ -1102,7 +1159,7 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
     </div>
   </section>
 
-  <section>
+  <section id="inschrijven">
     <div class="wrap">
       <h2>Inschrijven en betalen</h2>
       <ul class="prices">
@@ -1112,11 +1169,20 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
       </ul>
       <p><strong>Inschrijven kan tot en met dinsdag 12 januari 2027.</strong> Dat is een echte deadline: daarna leggen we de tickets, de overnachtingen en de onderdelen bij Borussia Dortmund vast, en kunnen we enkel nog inschrijvingen aanvaarden als er toevallig nog plaats is.</p>
       <p>De betaling verwachten we een week later, <strong>rond dinsdag 19 januari 2027</strong>. Dat is een richtdatum, geen harde grens: lukt het je niet tegen dan, laat het ons weten en we spreken iets af. Je krijgt de betaalgegevens van ons zodra je inschrijving bevestigd is.</p>
+      <dl class="bvb-rekening">
+        <dt>Rekeningnummer</dt>
+        <dd class="iban">BE27 9735 5170 1173</dd>
+        <dt>Op naam van</dt>
+        <dd>Rise Academy vzw</dd>
+        <dt>Mededeling</dt>
+        <dd class="mededeling">BVB + naam speler + geboortejaar</dd>
+      </dl>
+      <p class="chips-note">Vermeld de mededeling volledig, bijvoorbeeld <em>BVB Jan Janssens 2014</em>. Zo kunnen we je betaling meteen koppelen aan de juiste inschrijving. Reis je mee als supporter, zet dan je eigen naam in de mededeling.</p>
       <p class="chips-note">Je betaling vastleggen betekent niet dat je nergens meer op terug kan komen. Annuleren kan ook daarna nog &mdash; hoeveel we kunnen terugbetalen hangt enkel af van <em>wanneer</em> je annuleert. Zie de voorwaarden hieronder.</p>
     </div>
   </section>
 
-  <section>
+  <section id="annulering">
     <div class="wrap">
       <h2>Annuleringsvoorwaarden</h2>
       <p>Annuleren staat los van de inschrijf- en betaaldata. Je kan tot vlak voor de trip afhaken; wat we kunnen terugbetalen hangt af van hoe laat dat gebeurt. De tickets, de overnachtingen, de stadiontour en de onderdelen bij Borussia Dortmund worden immers vooraf vastgelegd en betaald, en die kosten lopen door, ook als er iemand afvalt.</p>
@@ -1132,7 +1198,7 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
     </div>
   </section>
 
-  <section>
+  <section id="verzekering">
     <div class="wrap">
       <h2>Verzekering</h2>
       <p>Voor deze trip gaan we uit van <strong>ieders eigen verzekering</strong>. Elke deelnemer &mdash; speler, begeleider of meereizende supporter &mdash; blijft zelf verzekerd via de eigen polissen: de familiale verzekering, de hospitalisatieverzekering, de mutualiteit en, voor spelers, de verzekering van de eigen club.</p>
@@ -1140,7 +1206,7 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
     </div>
   </section>
 
-  <section>
+  <section id="faq">
     <div class="wrap">
       <h2>Veelgestelde vragen</h2>
       <div class="faq">
@@ -1202,11 +1268,11 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
 
   <section>
     <div class="wrap">
-      <div class="cta-band">
+      <div class="cta-band cta-bvb">
         <h2>Mee naar Dortmund?</h2>
         <p>Schrijf je speler in, of meld je aan als meereizende supporter. Het aantal plaatsen is beperkt tot de delegatie van 20 spelers. Inschrijven kan tot en met <strong>dinsdag 12 januari 2027</strong>; de betaling verwachten we rond <strong>19 januari</strong>.</p>
         <div class="cta-actions">
-          <a href="https://forms.gle/NgrN28SZeVnuKRs37" target="_blank" rel="noopener" class="btn">Schrijf je in</a>
+          <a href="https://forms.gle/NgrN28SZeVnuKRs37" target="_blank" rel="noopener" class="btn btn-bvb">Schrijf je in</a>
           <a href="mailto:info@riseacademy.be" class="btn-outline">Stel een vraag</a>
         </div>
       </div>
