@@ -1016,8 +1016,10 @@ footer a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
 .prices li.is-highlight span,.prices li.is-highlight b{color:var(--pink)}
 
 /* ---- Borussia Dortmund Experience ---- */
-nav.site-nav a.nav-bvb{color:var(--bvb)}
+.hero h1.bvb-h1{color:var(--bvb)}
+nav.site-nav a.nav-bvb{color:var(--bvb);text-align:center}
 nav.site-nav a.nav-bvb:hover{color:#fff}
+@media (max-width:900px){nav.site-nav a.nav-bvb{display:inline-block}nav.site-nav a.nav-bvb .nav-l2{display:block}}
 
 /* flyerbanner op de homepagina */
 .bvb-promo{
@@ -1041,7 +1043,7 @@ nav.site-nav a.nav-bvb:hover{color:#fff}
   display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--bvb);margin:0 0 12px;
 }
-.bvb-title{display:block;font-size:clamp(20px,2.4vw,27px);font-weight:800;line-height:1.12;color:var(--white);margin:0 0 4px}
+.bvb-title{display:block;font-size:clamp(20px,2.4vw,27px);font-weight:800;line-height:1.12;color:var(--bvb);margin:0 0 4px}
 .bvb-title em{font-style:normal;color:var(--bvb);display:block}
 .bvb-date{
   display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
